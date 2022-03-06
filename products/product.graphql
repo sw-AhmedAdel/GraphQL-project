@@ -1,0 +1,22 @@
+type Query {
+       products : [Product] 
+       productByPrice(min: Float! , max: Float!) : [Product]
+       productById(id: ID!) : Product
+       getAllRatingAndReviews (id: ID! , star: Int! ): [Review]
+     }
+
+type Mutation {
+     addNewProduct (id: ID! , description:String! , price:Float!) : Product 
+     addNewReviews (id:ID! , rating:Int! , commnet:String) : Rivew
+}
+
+type Product {
+       id : ID
+       description : String!
+       price : Float!
+       reviews : [Rivew]
+     }
+type Rivew {
+       rating :Int! 
+       commnet : String
+     }

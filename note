@@ -1,0 +1,152 @@
+/*
+1 - install express to use it to integrate it with grapql
+2 - install graphql pajage that built by facebook >> npm install graphql
+3- install this express-graphql middleware, which we can find on npm this middleware will allow us to respond 
+to graphical queries on an end point of our choosing.
+// npm i express-graphql --force
+*/
+
+/**
+ *  
+const express = require('express');
+const app = express(); 
+const {buildSchema} =  require('graphql');
+//Now how do we make our express server responds to graphical queries?
+//by build schema at first this this will have the all data 
+const {graphqlHTTP} = require('express-graphql');
+
+/**
+ This schema contains basically a collection of types.
+That we define for each of the objects, for each of the types of data that are API supports.
+ 
+type query means We always start with this special query type, which every graphical service has, this root query type
+defines the entry point of every graphical query.
+*/
+/*
+const schema = buildSchema(`
+type Query {
+ description : String
+ price : Float
+}
+`)
+
+const root = {
+ description: 'red shoe',
+ price : 20.99
+}
+
+But how do we connect this to express?
+How do we make express responds to graphical queries?
+Well, that's what the Express Dash graphical library that we installed is for.
+ 
+
+app.use('/graphql' ,graphqlHTTP({
+ schema : schema ,
+ rootValue : root,
+ graphiql:true,// this will allow me to use graphql tool to test our query so after 3000/graphql this will give me tools to how our server resppond
+}))
+
+app.listen(3000,() => {
+ console.log('Running graphql Server');
+})
+
+
+ 
+
+resolvers mean
+// make sure the query is valied and the all failed as well 
+When a field is incluresponding resoded in our query.
+The corlver is called to provide the value for that field.
+When the server has called all the resolver functions found in the query, it then wraps all those values
+up and sends them back to the front and back to the client that asked for the data in the first place.
+ */
+
+ /* 
+ productById(id:"callOfDuty") {
+    price
+    description
+    reviews {
+      rating 
+      commnet
+    }
+  }
+  ,
+  productByPrice(min:10 , max :500) {
+    price
+    description
+  },
+  products {
+    id 
+    description
+    price
+    reviews {
+      commnet
+      rating
+    }
+    
+  },
+  orders {
+    date
+    subtotal
+    items {
+      Product {
+        id  
+      }
+      quantity
+    }
+  }*/
+
+  /*
+
+  mutation {
+  addNewProduct(id:"battelfiled", description:"battelfiled game", price:11) {
+    id
+    description
+    price
+  }
+}*/ 
+
+
+/*
+ add product and reviews
+mutation {
+  addNewProduct(id:"needforspeed", description :"need for speed" , price :11 ){
+    id 
+    description
+    price
+  }
+ playStation5: addNewReviews(id:"playStation5" , rating:5 , commnet:"good") {
+   rating
+   commnet
+  }
+  
+callOfDuty:   addNewReviews(id:"needforspeed" , rating:5 , commnet:"good") {
+   rating
+   commnet
+  }
+}
+
+
+npm install @graphql-tools/schema this is used to split up the schema
+npm install @graphql-tools/load-files to get the seperated schema
+npm install apollo-server-express is a way of implementing graphql 
+ which is going to handle all of our incoming requests, whether they're for graphical or another
+express middleware in our server.
+
+
+-----------------
+query getProduct {
+getAllRatingWithFiveStart(id:"dragonball" ,star:5 ) {
+  rating
+  comment
+}
+}
+mutation {
+  addReview(id:"dragonball", rating:5 ,
+  comment: "good game") {
+    rating 
+    comment
+  }
+}
+
+*/
